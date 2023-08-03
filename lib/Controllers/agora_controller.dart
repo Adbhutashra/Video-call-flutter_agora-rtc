@@ -14,20 +14,24 @@ class AgoraController extends GetxController {
   bool muted = false;
   bool muteVideo = false;
   bool backCamera = false;
+  bool changeSpeaker = false;
 
   void onToggleMuteAudio() {
     muted = !muted;
     AgoraRtcEngine.muteLocalAudioStream(muted);
+     update();
   }
 
   void onToggleMuteVideo() {
     muteVideo = !muteVideo;
-    AgoraRtcEngine.muteLocalVideoStream(muteVideo);
+    AgoraRtcEngine.enableLocalVideo(muteVideo);
+    update();
   }
 
   void onSwitchCamera() {
     backCamera = !backCamera;
     AgoraRtcEngine.switchCamera();
+     update();
   }
 
   void startMeetingTimer() async {
@@ -55,5 +59,7 @@ class AgoraController extends GetxController {
         meetingDuration = meetingDuration + 1;
       },
     );
+     update();
   }
+  
 }

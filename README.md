@@ -10,11 +10,6 @@ Test App by Downloading Apk From Screenshot/app.apk
 
 #### Getting Started:
 
-1. Clone/Download The Repo 
-2. Signup/Login at https://console.agora.io/signin And get Agora App id;
-3. replace Appid At lib/Helpers/utils.dart
-4. run ```flutter run ```
-
 #### Screenshots:
 
 <img src="Screenshots/homepage.jpg" width="300" height="600">

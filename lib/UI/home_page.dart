@@ -54,11 +54,11 @@ class HomePage extends StatelessWidget {
                     flex: 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: FlatButton(
+                      child: ElevatedButton(
                         onPressed: () {
                           showDialog(
                               context: context,
-                              barrierDismissible: false,
+                             
                               builder: (_) {
                                 return CreateRoomDialog();
                               });
@@ -83,7 +83,7 @@ class HomePage extends StatelessWidget {
                                         color: const Color(0xFF1A1E78)),
                                   ),
                                   Text(
-                                    "create a unique agora room and ask others to join the same.",
+                                    "Create a unique room and ask others to join the same.",
                                     style: regularTxtStyle.copyWith(
                                         color: const Color(0xFF1A1E78)),
                                   ),
@@ -107,11 +107,11 @@ class HomePage extends StatelessWidget {
                     flex: 4,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: FlatButton(
+                      child: ElevatedButton(
                         onPressed: () {
                           showDialog(
                               context: context,
-                              barrierDismissible: false,
+                              
                               builder: (_) {
                                 return JoinRoomDialog();
                               });
@@ -137,7 +137,7 @@ class HomePage extends StatelessWidget {
                                         color: const Color(0xFF1A1E78)),
                                   ),
                                   Text(
-                                    "Join a agora room created by your friend.",
+                                    "Connect with your loved ones!",
                                     style: regularTxtStyle.copyWith(
                                         color: const Color(0xFF1A1E78)),
                                   ),
@@ -155,16 +155,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF1A1E78),
-        child: Icon(Icons.thumb_up_alt_outlined),
-        onPressed: () {
-          Get.snackbar("You Liked ?", "Please ★ My Project On Git :) ",
-              backgroundColor: Colors.white,
-              colorText: Color(0xFF1A1E78),
-              snackPosition: SnackPosition.BOTTOM);
-        },
-      ),
+     
     );
   }
 }

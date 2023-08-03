@@ -38,10 +38,11 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6)),
-                color: const Color(0xFF1A1E78),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6)), backgroundColor:Color(0xFF1A1E78) ),
+                
+            
                 onPressed: () {
                   shareToApps(roomId);
                 },
@@ -59,10 +60,10 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
                   ],
                 ),
               ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6)),
-                color: const Color(0xFF1A1E78),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF1A1E78), shape:  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6))),
+              
                 onPressed: () async {
                   bool isPermissionGranted =
                       await handlePermissionsForCall(context);

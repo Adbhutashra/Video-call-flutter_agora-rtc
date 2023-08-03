@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:signal_strength_indicator/signal_strength_indicator.dart';
+import 'package:wakelock/wakelock.dart';
 
 class VideoCallScreen extends StatefulWidget {
   final String channelName;
@@ -49,6 +50,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
 
     // destroy Agora sdk
     AgoraRtcEngine.leaveChannel();
+    Wakelock.disable();
     AgoraRtcEngine.destroy();
   }
 
@@ -67,6 +69,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
     }
 
     await _initAgoraRtcEngine();
+    Wakelock.enable();
     _addAgoraEventHandlers();
     await AgoraRtcEngine.enableWebSdkInteroperability(true);
 
@@ -78,6 +81,8 @@ class VideoCallScreenState extends State<VideoCallScreen> {
   Future<void> _initAgoraRtcEngine() async {
     await AgoraRtcEngine.create(getAgoraAppId());
     await AgoraRtcEngine.enableVideo();
+    await AgoraRtcEngine.enableAudio();
+    await AgoraRtcEngine.setEnableSpeakerphone(true);
   }
 
   /// agora event handlers
@@ -263,7 +268,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
             ],
           ),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text("Yes"),
               onPressed: () {
                 Navigator.pop(context); // Close dialog
@@ -271,7 +276,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
                     MaterialPageRoute(builder: (context) => HomePage()));
               },
             ),
-            FlatButton(
+            ElevatedButton(
               child: Text("No"),
               onPressed: () {
                 Navigator.pop(context); // Close dialog
@@ -308,6 +313,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
                     ? Icons.videocam_off_outlined
                     : Icons.videocam_outlined,
               ),
+             
             ],
             initialActiveIndex: 2, //optional, default as 0
             onTap: (int i) {
@@ -321,6 +327,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
                 case 2:
                   _.onToggleMuteVideo();
                   break;
+               
               }
             },
           );
@@ -335,26 +342,19 @@ class VideoCallScreenState extends State<VideoCallScreen> {
       child: Stack(
         children: <Widget>[
           buildJoinUserUI(),
-          Align(
-            alignment: Alignment.topLeft,
+           Align(
+            alignment: Alignment.topRight,
             child: Container(
-              margin: const EdgeInsets.only(left: 10, top: 30),
-              child: FlatButton(
-                minWidth: 40,
-                height: 50,
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                },
-                child: Icon(
-                  Icons.arrow_back_outlined,
-                  color: Colors.white,
-                  size: 24.0,
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6)),
-                color: Colors.white38,
-              ),
+              margin: const EdgeInsets.only(right: 10, top: 30),
+              child: Text("Room Id",style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),)
+            ),
+          ),
+          
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              margin: const EdgeInsets.only(right: 10, top: 50),
+              child: Text(widget.channelName,style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),)
             ),
           ),
           Align(

@@ -10,39 +10,47 @@ class JoinRoomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      title: Text("Join Room"),
-      content: ListView(
-        shrinkWrap: true,
-        children: [
-          Image.asset(
-            'Assets/room_join_vector.png',
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+  title: Text("Join Room"),
+  content: SingleChildScrollView(
+    child: ListBody(
+      children: [
+        Image.asset(
+          'Assets/room_join_vector.png',
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        TextFormField(
+          controller: roomTxtController,
+          decoration: InputDecoration(
+            hintText: "Enter room id to join",
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: const Color(0xFF1A1E78), width: 2),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: const Color(0xFF1A1E78), width: 2),
+            ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: roomTxtController,
-            decoration: InputDecoration(
-                hintText: "Enter room id to join",
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: const Color(0xFF1A1E78), width: 2)),
-                enabledBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: const Color(0xFF1A1E78), width: 2))),
-            style: regularTxtStyle.copyWith(
-                color: const Color(0xFF1A1E78), fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          FlatButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+          style: regularTxtStyle.copyWith(
             color: const Color(0xFF1A1E78),
-            onPressed: () async {
-              if (roomTxtController.text.isNotEmpty) {
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
+    ),
+  ),
+  actions: [
+    ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        backgroundColor: Color(0xFF1A1E78),
+      ),
+      onPressed: () async {
+      if (roomTxtController.text.isNotEmpty) {
                 bool isPermissionGranted =
                     await handlePermissionsForCall(context);
                 if (isPermissionGranted) {
@@ -65,23 +73,23 @@ class JoinRoomDialog extends StatelessWidget {
                     colorText: Color(0xFF1A1E78),
                     snackPosition: SnackPosition.BOTTOM);
               }
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.arrow_forward, color: Colors.white),
-                const SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  "Join Room",
-                  style: regularTxtStyle,
-                ),
-              ],
-            ),
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.arrow_forward, color: Colors.white),
+          const SizedBox(
+            width: 20,
+          ),
+          Text(
+            "Join Room",
+            style: regularTxtStyle,
           ),
         ],
       ),
-    );
+    ),
+  ],
+);
+
   }
 }

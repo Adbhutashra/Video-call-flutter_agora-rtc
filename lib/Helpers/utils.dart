@@ -4,7 +4,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 String getAgoraAppId() {
-  return "<YOUR APP ID HERE>"; // Return Your Agora App Id
+  return "a2b57802bea8420caf5d799492c943b6"; // Return Your Agora App Id
 }
 
 checkNoSignleDigit(int no) {
@@ -34,17 +34,18 @@ Future<bool> handlePermissionsForCall(BuildContext context) async {
   Map<Permission, PermissionStatus> statuses = await [
     Permission.camera,
     Permission.microphone,
-    Permission.storage,
+    // Permission.storage,
   ].request();
 
-  if (statuses[Permission.storage].isPermanentlyDenied) {
-    showCustomDialog(context, "Permission Required",
-        "Storage Permission Required for Video Call", () {
-      Navigator.pop(context);
-      openAppSettings();
-    });
-    return false;
-  } else if (statuses[Permission.camera].isPermanentlyDenied) {
+  // if (statuses[Permission.storage].isPermanentlyDenied) {
+  //   showCustomDialog(context, "Permission Required",
+  //       "Storage Permission Required for Video Call", () {
+  //     Navigator.pop(context);
+  //     openAppSettings();
+  //   });
+  //   return false;
+  // } else
+   if (statuses[Permission.camera].isPermanentlyDenied) {
     showCustomDialog(context, "Permission Required",
         "Camera Permission Required for Video Call", () {
       Navigator.pop(context);
@@ -90,7 +91,7 @@ void showCustomDialog(BuildContext context, String title, String message,
           style: TextStyle(fontFamily: 'WorkSansMedium'),
         ),
         actions: <Widget>[
-          new FlatButton(
+          new ElevatedButton(
             child:
                 new Text("OK", style: TextStyle(fontFamily: 'WorkSansMedium')),
             onPressed: okPressed,
