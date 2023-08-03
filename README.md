@@ -6,17 +6,13 @@ Video Calling App Made in Flutter with Agora.io
 - 1-1 Video Call
 - Group Video Call (4 max)
 
-Test App by Downloading Apk From Screenshot/app.apk
+Test App by Downloading Apk From apk/app-release.apk
 
 #### Getting Started:
 
 #### Screenshots:
 
-<img src="Screenshots/homepage.jpg" width="300" height="600">
-<img src="Screenshots/create_room.jpg" width="300" height="600">
-<img src="Screenshots/join_room.jpg" width="300" height="600">
-<img src="Screenshots/VideoCall_Ui.jpg" width="300" height="600">
-
-#### Graphics Credits:
-- FlatIcons
-- FreePik
+<img src="Screenshots/home.jpg" width="300" height="600">
+<img src="Screenshots/createroom.jpg" width="300" height="600">
+<img src="Screenshots/joinroom.jpg" width="300" height="600">
+<img src="Screenshots/Videopage.jpg" width="300" height="600">
