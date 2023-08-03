@@ -15,4 +15,4 @@ Test App by Downloading Apk From apk/app-release.apk
 <img src="Screenshots/home.jpg" width="300" height="600">
 <img src="Screenshots/createroom.jpg" width="300" height="600">
 <img src="Screenshots/joinroom.jpg" width="300" height="600">
-<img src="Screenshots/Videopage.jpg" width="300" height="600">
+<img src="Screenshots/videopage.jpg" width="300" height="600">
